@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './style/index.css';
+import Userform from './features/Auth/components/parts/UserForm';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="bg-gray-100">
-      <App />
+    <div>
+      <Userform />
     </div>
   </React.StrictMode>,
   document.getElementById('root'),
