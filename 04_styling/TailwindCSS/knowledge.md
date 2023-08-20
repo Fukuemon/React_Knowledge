@@ -62,110 +62,134 @@ $ npm init @eslint/config
 
 3. ESLint の設定ファイルの編集
 
-````bash
-
 ```bash
 $ vim .eslintrc.js
-````
+```
+
+:::details 記述内容
 
 ```js
 module.exports = {
+  // module.exports： Node.js で使われる CommonJS のモジュールシステムの構文
   env: {
-    browser: true,
-    es2021: true,
+    // env は ESLint が対象とする環境を指定するオプション
+    browser: true, // ブラウザのグローバル変数を有効にする
+    es2021: true, // ES2021 の構文を有効にする
   },
   extends: [
-    "standard-with-typescript",
-    "plugin:react/recommended",
-    "airbnb/hooks",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    // extends： ESLint で利用するルールを指定するオプション
+    "standard-with-typescript", // 標準のルールを TypeScript に対応させたルールを利用する
+    "plugin:react/recommended", // React に関するルールを利用する
+    "airbnb/hooks", // Airbnb のルールを利用する
+    "plugin:import/errors", // import に関するルールを利用する
+    "plugin:import/warnings", /// import に関するルールを利用する
+    "plugin:import/typescript", // import に関するルールを利用する
+    "plugin:@typescript-eslint/recommended", // TypeScript に関するルールを利用する
+    "plugin:@typescript-eslint/recommended-requiring-type-checking", // TypeScript に関するルールを利用する
   ],
-  parser: "@typescript-eslint/parser",
+  parser: "@typescript-eslint/parser", // parser：　ESLint で利用するパーサーを指定するオプション
   parserOptions: {
+    // parserOptions は ESLint で利用するパーサーの設定を指定するオプション
     ecmaFeatures: {
-      jsx: true,
+      // ecmaFeatures は ECMAScript のバージョンごとの構文を有効にするオプション
+      jsx: true, // JSX を有効にする
     },
-    ecmaVersion: "latest",
-    project: "./tsconfig.eslint.json",
-    sourceType: "module",
-    tsconfigRootDir: __dirname,
+    ecmaVersion: "latest", // ECMAScript のバージョンを指定する
+    project: "./tsconfig.eslint.json", // project は TypeScript の設定ファイルを指定するオプション
+    sourceType: "module", // sourceType は ECMAScript のモジュールを利用するかどうかを指定するオプション
+    tsconfigRootDir: __dirname, // tsconfigRootDir は tsconfig.json のルートディレクトリを指定するオプション
   },
-  plugins: ["import", "jsx-a11y", "react", "react-hooks", "@typescript-eslint"],
-  root: true,
+  plugins: ["import", "jsx-a11y", "react", "react-hooks", "@typescript-eslint"], // plugins：　ESLint で利用するプラグインを指定するオプション
+  root: true, // root は ESLint の設定ファイルをルートディレクトリから探すかどうかを指定するオプション
   rules: {
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    // rules　 ESLint で利用するルールを指定するオプション
+    "no-use-before-define": "off", // no-use-before-define は 未定義の変数を使用することを禁止するルール
+    "@typescript-eslint/no-use-before-define": ["error"], // @typescript-eslint/no-use-before-define は 未定義の変数を使用することを禁止するルール
     "lines-between-class-members": [
-      "error",
+      // lines-between-class-members は クラスメンバーの間に空行を入れるかどうかを指定するルール
+      "error", //
       "always",
       {
-        exceptAfterSingleLine: true,
+        exceptAfterSingleLine: true, // 1行の場合は空行を入れない
       },
     ],
     "no-void": [
+      // no-void は void 演算子を禁止するルール
       "error",
       {
-        allowAsStatement: true,
+        allowAsStatement: true, // void 演算子を文として使用することを許可する
       },
     ],
     "padding-line-between-statements": [
+      // padding-line-between-statements は 文の間に空行を入れるかどうかを指定するルール
       "error",
       {
-        blankLine: "always",
-        prev: "*",
-        next: "return",
+        blankLine: "always", // 常に空行を入れる
+        prev: "*", // すべての文の前に空行を入れる
+        next: "return", // return 文の前に空行を入れる
       },
     ],
     "@typescript-eslint/no-unused-vars": [
+      // @typescript-eslint/no-unused-vars は 未使用の変数を禁止するルール
       "error",
       {
-        vars: "all",
-        args: "after-used",
-        argsIgnorePattern: "_",
-        ignoreRestSiblings: false,
-        varsIgnorePattern: "_",
+        vars: "all", // すべての変数を対象にする
+        args: "after-used", // 使用後の引数のみを対象にする
+        argsIgnorePattern: "_", // _ で始まる引数を無視する
+        ignoreRestSiblings: false, // 分割代入の残りの要素を無視しない
+        varsIgnorePattern: "_", // _ で始まる変数を無視する
       },
     ],
     "import/extensions": [
-      "error",
-      "ignorePackages",
+      // import/extensions は import 文で拡張子を省略するかどうかを指定するルール
+      "error", // エラーとする
+      "ignorePackages", // パッケージは対象外とする
       {
-        js: "never",
-        jsx: "never",
-        ts: "never",
-        tsx: "never",
+        js: "never", // js ファイルは拡張子を省略しない
+        jsx: "never", // jsx ファイルは拡張子を省略しない
+        ts: "never", // ts ファイルは拡張子を省略しない
+        tsx: "never", // tsx ファイルは拡張子を省略しない
+      },
+      {
+        // import 文で拡張子を省略した場合の処理を指定する
+        js: "never", // js ファイルは拡張子を省略しない
+        jsx: "never", // jsx ファイルは拡張子を省略しない
+        ts: "never", // ts ファイルは拡張子を省略しない
+        tsx: "never", // tsx ファイルは拡張子を省略しない
       },
     ],
     "react/jsx-filename-extension": [
-      "error",
+      // react/jsx-filename-extension は JSX を含むファイルの拡張子を指定するルール
+      "error", // エラーとする
       {
+        // 拡張子を指定する
         extensions: [".jsx", ".tsx"],
       },
     ],
     "react/jsx-props-no-spreading": [
+      // react/jsx-props-no-spreading： props を展開することを禁止するルール
       "error",
       {
-        html: "enforce",
-        custom: "enforce",
-        explicitSpread: "ignore",
+        html: "enforce", // HTML 要素に対しては強制する
+        custom: "enforce", // コンポーネントに対しては強制する
+        explicitSpread: "ignore", // 明示的な展開は無視する
       },
     ],
-    "react/react-in-jsx-scope": "off",
+    "react/react-in-jsx-scope": "off", // react/react-in-jsx-scope は JSX を使用する際に React をインポートすることを強制するルール
   },
   overrides: [
+    // overrides：特定のファイルに対してのみルールを適用するオプション
     {
-      files: ["*.tsx"],
+      files: ["*.tsx"], // 拡張子が tsx のファイルに対してのみルールを適用する
       rules: {
-        "react/prop-types": "off",
+        "react/prop-types": "off", // react/prop-types は props の型を指定するルール
       },
     },
   ],
   settings: {
+    // settings：ESLint で利用する特定のプラグインや解析ツールの設定をするオプション
     "import/resolver": {
+      // import/resolver は import 文の解決方法を指定するオプション
       node: {
         paths: ["src"],
       },
@@ -174,43 +198,49 @@ module.exports = {
 };
 ```
 
+:::
+
 4. tsconfig.eslint.json の作成
    Q：tsconfig.eslint.json とは？
    A：ESLint で TypeScript のコードを解析するために必要な設定ファイル
 
-````bash
-
 ```bash
 $ vim tsconfig.eslint.json
-````
+```
+
+::: details 記述内容
 
 ```json
 {
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "dist"]
+  "extends": "./tsconfig.json", // tsconfig.json を継承
+  "include": ["src/**/*.ts", "src/**/*.tsx"], // 解析対象のファイル
+  "exclude": ["node_modules", "dist"] // 解析対象外のファイル
 }
 ```
+
+:::
 
 5. .eslintignore の作成
    Q：.eslintignore とは？
    A：ESLint で解析しないファイルを指定するための設定ファイル
 
-````bash
-
 ```bash
 $ vim .eslintignore
-````
+```
+
+::: details 記述内容
 
 ```bash
-build/
-public/
-**/coverage/
-**/node_modules/
-**/*.min.js
-*.config.js
-.*lintrc.js
+build/ # ビルドファイル
+public/ # 静的ファイル
+**/coverage/ # テストカバレッジ
+**/node_modules/ # パッケージ管理
+**/*.min.js # 圧縮ファイル
+*.config.js # 設定ファイル
+.*lintrc.js  # 設定ファイル
 ```
+
+:::
 
 ### Prettier の導入
 
@@ -226,11 +256,13 @@ $ npm install -D prettier eslint-config-prettier
 $ vim .prettierrc
 ```
 
+::: details 記述内容
+
 ```json
 {
-  "singleQuote": true,
-  "trailingComma": "all",
-  "endOfLine": "auto"
+  "singleQuote": true, // シングルクォートに統一
+  "trailingComma": "all", // 末尾のカンマを残す
+  "endOfLine": "auto" // 改行コードを自動で設定
 }
 ```
 
@@ -241,6 +273,8 @@ $ vim .prettierrc
 ```bash
 $ vim .vscode/settings.json
 ```
+
+::: details 記述内容
 
 ```json
 {
@@ -272,6 +306,8 @@ $ vim .vscode/settings.json
 }
 ```
 
+:::
+
 ### TailwindCSS の導入
 
 1. TailwindCSS のインストール
@@ -292,6 +328,8 @@ $ npx tailwindcss init -p
 $ vim tailwind.config.js
 ```
 
+::: details 記述内容
+
 ```js
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
@@ -302,11 +340,11 @@ module.exports = {
 };
 ```
 
+:::
+
 4. TailwindCSS の設定ファイルの編集
 
-```bash
-$ vim postcss.config.js
-```
+記述内容
 
 ```js
 module.exports = {
@@ -317,11 +355,13 @@ module.exports = {
 };
 ```
 
-5. TailwindCSS の設定ファイルの編集
+5. index.css の設定ファイルの編集
 
 ```bash
-$ vim src/index.css
+$ vim src/style/index.css
 ```
+
+記述内容
 
 ```css
 @tailwind base;
@@ -329,16 +369,14 @@ $ vim src/index.css
 @tailwind utilities;
 ```
 
-6. TailwindCSS の設定ファイルの編集
+6. main.tsx の編集
 
-```bash
-$ vim src/main.tsx
-```
+::: details 記述内容
 
 ```tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./style/index.css";
 import App from "./App";
 
 ReactDOM.render(
@@ -351,7 +389,9 @@ ReactDOM.render(
 );
 ```
 
-10. TailwindCSS の設定ファイルの編集
+:::
+
+10. App.tsx の編集
 
 ```bash
 $ vim src/App.tsx
