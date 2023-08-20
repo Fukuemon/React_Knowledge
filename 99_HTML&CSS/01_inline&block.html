@@ -1,0 +1,38 @@
+<!-- インライン要素とブロック要素の違い -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- インライン要素 -->
+    <span>hogehogehoge</span>
+    <span>hogehogehoge</span>
+    <span>hogehogehoge</span>
+    <span>hogehogehoge</span>
+
+    <!-- ブロック要素 -->
+    <div>hogehogehoge</div>
+    <div>hogehogehoge</div>
+    <div>hogehogehoge</div>
+    <div>hogehogehoge</div>
+
+    <!-- スタイリングしてみる -->
+    <style>
+      body {
+        text-align: center; /* 横中央揃え */
+      }
+      span {
+        background-color: red;
+      }
+      div {
+        margin: 0 auto; /* 横中央揃え */
+        width: 300px;
+        height: 100px;
+        background-color: blue;
+      }
+    </style>
+  </body>
+</html>
