@@ -1,0 +1,24 @@
+$cblue: blue;
+$cred: red;
+$cpurple: purple;
+$cblack: black;
+
+.parent {
+  color: $cblue;
+
+  & > .element {
+    color: $cred;
+
+    &.second-child {
+      color: $cblack;
+    }
+  }
+}
+
+.element {
+  color: $cpurple;
+}
+
+.child {
+  color: $cpurple;
+}
