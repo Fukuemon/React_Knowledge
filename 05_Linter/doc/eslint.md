@@ -6,6 +6,8 @@ yarn create vite eslint --template react-ts
 
 # 2.ESLint の導入
 
+## 1. ESLint 本体をインストール
+
 ```bash
 yarn add -D eslint
 ```
@@ -13,7 +15,7 @@ yarn add -D eslint
 ESLint 本体に加えて、公式が提供している TypeScript 対応プロジェクト「TypeScripts ESLint」をインストールする
 「typescript-eslint-parser ・ eslint-plugin-typescript」 というパッケージもあるが、すでに非推奨となっているので、インストールしないように注意する
 
-## ESLint 本体を除くエコシステムのパッケージ達
+#### ESLint 本体を除くエコシステムのパッケージ達
 
 - パーサ(Parser)
   ソースコードを特定の言語仕様に沿って解析してくれるライブラリ。
@@ -29,7 +31,7 @@ ESLint 本体に加えて、公式が提供している TypeScript 対応プロ�
 パーサ：@typescript-eslint/parser
 プラグイン：@typescript-eslint/eslint-plugin
 
-# 3.ESLint の設定ファイルを作成
+## 2.ESLint の設定ファイルを作成
 
 ```bash
 yarn eslint --init
@@ -79,7 +81,7 @@ yarn eslint --init
   pnpm
 ```
 
-### スタイルガイドとは
+#### スタイルガイドとは
 
 コーディング規約のこと
 Standard ：JavaScript のコーディング規約を定めたもの
@@ -89,13 +91,13 @@ npm や Github、Vercel といった多くの企業が参加している
 
 これにより、ESLint の設定ファイルである.eslintrc.json が作成される
 
-# 4.ESLint の設定ファイルを編集
+## 3.ESLint の設定ファイルを編集
+
+### 初期状態の.eslintrc.json
 
 ```bash
-$ vim .eslintrc.json
+$ cat .eslintrc.json
 ```
-
-初期
 
 ```bash
 {
@@ -141,3 +143,53 @@ $ vim .eslintrc.json
   各プラグインの追加の設定を記述
 
 ### 編集する
+
+```bash
+$vim .eslintrc.json
+```
+
+```json
+{
+  "env": {
+    //環境ごとのグローバル変数を有効にする
+    "browser": true, //ブラウザのグローバル変数を有効にする
+    "es2022": true //ES2022の構文を有効にする
+  },
+  "extends": [
+    //継承する設定 (後述の方が適応される)
+    "eslint:recommended", //ESLintの推奨ルール
+    "plugin:@typescript-eslint/recommended", //TypeScriptの推奨ルール
+    "plugin:@typescript-eslint/recommended-requiring-type-checking", //TypeScriptの推奨ルール（型チェック有効時）
+    "standard-with-typescript", //StandardJSのルール
+    "plugin:react/recommended" //Reactの推奨ルール
+  ],
+  "overrides": [],
+  "parserOptions": {
+    //パーサーの設定
+    "ecmaVersion": "latest", //ECMAScriptのバージョン
+    "tsconfigRootDir": ".", //TypeScriptの設定ファイルのルートディレクトリ
+    "project": ["./tsconfig.json"], //TypeScriptの設定ファイルのパス
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {},
+  "settings": {
+    //各種モジュールの設定
+    "react": {
+      "version": "detect" //Reactのバージョンを自動検出
+    }
+  }
+}
+```
+
+extends
+eslint:recommended # ESLint の推奨ルール
+plugin:@typescript-eslint/recommended # TypeScript の推奨ルール
+standard-with-typescript にない有用なルールがいくつかある
+
+plugin:@typescript-eslint/recommended-requiring-type-checking # TypeScript の推奨ルール（型チェック有効時）
+リソースを食うため、必要に応じて無効にする
+
+##### これで必要最低限の設定は完了！
+
+# ESLint のカスタマイズ

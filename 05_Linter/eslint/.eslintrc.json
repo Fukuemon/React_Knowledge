@@ -1,19 +1,31 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "standard-with-typescript",
-        "plugin:react/recommended"
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
+  "env": {
+    //環境ごとのグローバル変数を有効にする
+    "browser": true, //ブラウザのグローバル変数を有効にする
+    "es2022": true //ES2022の構文を有効にする
+  },
+  "extends": [
+    //継承する設定 (後述の方が適応される)
+    "eslint:recommended", //ESLintの推奨ルール
+    "plugin:@typescript-eslint/recommended", //TypeScriptの推奨ルール
+    "plugin:@typescript-eslint/recommended-requiring-type-checking", //TypeScriptの推奨ルール（型チェック有効時）
+    "standard-with-typescript", //StandardJSのルール
+    "plugin:react/recommended" //Reactの推奨ルール
+  ],
+  "overrides": [],
+  "parserOptions": {
+    //パーサーの設定
+    "ecmaVersion": "latest", //ECMAScriptのバージョン
+    "tsconfigRootDir": ".", //TypeScriptの設定ファイルのルートディレクトリ
+    "project": ["./tsconfig.json"], //TypeScriptの設定ファイルのパス
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {},
+  "settings": {
+    //各種モジュールの設定
+    "react": {
+      "version": "detect" //Reactのバージョンを自動検出
     }
+  }
 }
