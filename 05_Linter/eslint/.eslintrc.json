@@ -1,32 +1,33 @@
 {
   "env": {
-    //環境ごとのグローバル変数を有効にする
-    "browser": true, //ブラウザのグローバル変数を有効にする
-    "es2022": true //ES2022の構文を有効にする
+    "browser": true,
+    "es2022": true
   },
   "extends": [
-    //継承する設定 (後述の方が適応される)
-    "eslint:recommended", //ESLintの推奨ルール
-    "plugin:@typescript-eslint/recommended", //TypeScriptの推奨ルール
-    "plugin:@typescript-eslint/recommended-requiring-type-checking", //TypeScriptの推奨ルール（型チェック有効時）
-    "standard-with-typescript", //StandardJSのルール
-    "plugin:jsx-a11y/recommended", //JSXのアクセシビリティの推奨ルール
-    "plugin:react/recommended", //Reactの推奨ルール
-    "plugin:react/jsx-runtime", //Reactの推奨ルール
-    "plugin:react-hooks/recommended" //React Hooksの推奨ルール
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "standard-with-typescript",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "prettier"
   ],
-  "overrides": [],
   "parserOptions": {
-    //パーサーの設定
-    "ecmaVersion": "latest", //ECMAScriptのバージョン
-    "tsconfigRootDir": ".", //TypeScriptの設定ファイルのルートディレクトリ
-    "project": ["./tsconfig.json"], //TypeScriptの設定ファイルのパス
+    "ecmaVersion": "latest",
+    "tsconfigRootDir": ".",
+    "project": ["./tsconfig.json"],
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "jsx-a11y", "react", "react-hooks"],
+  "plugins": [
+    "@typescript-eslint",
+    "jsx-a11y",
+    "react",
+    "react-hooks"
+  ],
   "rules": {
     "padding-line-between-statements": [
-      //文の間の空行を指定する
       "error",
       {
         "blankLine": "always",
@@ -34,18 +35,16 @@
         "next": "return"
       }
     ],
-    "@typescript-eslint/consistent-type-definitions": "off", //型定義の一貫性を指定する
-    "@typescript-eslint/explicit-function-return-type": "off", //関数の戻り値の型を指定する
-    "@typescript-eslint/explicit-module-boundary-types": ["error"], //モジュールの境界の型を指定する
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": ["error"],
     "@typescript-eslint/no-misused-promises": [
-      //誤ったPromiseの使用を指定する
       "error",
       {
         "checksVoidReturn": false
       }
     ],
     "@typescript-eslint/no-unused-vars": [
-      //未使用の変数を指定する
       "error",
       {
         "argsIgnorePattern": "^_",
@@ -53,14 +52,12 @@
       }
     ],
     "@typescript-eslint/triple-slash-reference": [
-      //トリプルスラッシュディレクティブを指定する
       "error",
       {
         "types": "always"
       }
     ],
     "import/extensions": [
-      //拡張子を指定する
       "error",
       {
         "ignorePackages": true,
@@ -73,7 +70,6 @@
       }
     ],
     "import/order": [
-      //モジュールの順序を指定する
       "error",
       {
         "groups": [
@@ -117,12 +113,5 @@
         "react/prop-types": "off"
       }
     }
-  ],
-
-  "settings": {
-    //各種モジュールの設定
-    "react": {
-      "version": "detect" //Reactのバージョンを自動検出
-    }
-  }
+  ]
 }
