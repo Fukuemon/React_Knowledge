@@ -1,0 +1,24 @@
+.rect {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: #000;
+}
+
+.btn {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  margin: 0 auto;
+  padding: 10px 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 1s;
+}
+.btn.changecolor:hover {
+  background-color: #000;
+  color: #fff;
+}
+.btn.float:hover {
+  box-shadow: 0 0 10px #000;
+}/*# sourceMappingURL=style.css.map */
