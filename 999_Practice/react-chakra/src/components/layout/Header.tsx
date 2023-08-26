@@ -1,23 +1,19 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { memo, FC } from "react";
-import {
-  Flex,
-  Heading,
-  Link,
-  Box,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  useDisclosure,
-  DrawerCloseButton,
-} from "@chakra-ui/react";
+import { Flex, Heading, Link, Box, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { MenuDrawer } from "../molecules/MenuDrawer";
+import { useNavigate } from "react-router-dom";
 
 export const Header: FC = memo(() => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const navigate = useNavigate();
+  const onClickHome = () => {
+    navigate("/home", { state: { id: "1" } });
+  };
+  const onClickUserManagement = () => navigate("/home/user_management");
+  const onClickSetting = () => navigate("/home/setting"); // ここでのhistoryはuseHistory()の戻り値
+
   return (
     <>
       <Flex
@@ -33,6 +29,7 @@ export const Header: FC = memo(() => {
           as="a"
           mr={8}
           _hover={{ color: "blue.500", cursor: "pointer" }}
+          onClick={onClickHome}
         >
           <Heading as="h1" fontSize={{ base: "mg", md: "lg" }}>
             ユーザー管理アプリ
@@ -43,12 +40,21 @@ export const Header: FC = memo(() => {
           fontSize={"sm"}
           flexGrow={2}
           display={{ base: "none", md: "flex" }}
-          _hover={{ color: "blue.500", cursor: "pointer" }}
         >
           <Box pr={4}>
-            <Link>ユーザー一覧</Link>
+            <Link
+              onClick={onClickUserManagement}
+              _hover={{ color: "blue.500", cursor: "pointer" }}
+            >
+              ユーザー一覧
+            </Link>
           </Box>
-          <Link>設定</Link>
+          <Link
+            onClick={onClickSetting}
+            _hover={{ color: "blue.500", cursor: "pointer" }}
+          >
+            設定
+          </Link>
         </Flex>
 
         <HamburgerIcon
@@ -57,19 +63,13 @@ export const Header: FC = memo(() => {
           onClick={onOpen}
         />
       </Flex>
-      <Drawer placement="bottom" size="md" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>ユーザー管理アプリ</DrawerHeader>
-            <DrawerBody p={0} bg="gray.100">
-              <Button w="100%">TOP</Button>
-              <Button w="100%">ユーザー一覧</Button>
-              <Button w="100%">設定</Button>
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+      <MenuDrawer
+        onClose={onClose}
+        isOpen={isOpen}
+        onClickHome={onClickHome}
+        onClickSetting={onClickSetting}
+        onClickUserManagement={onClickUserManagement}
+      />
     </>
   );
 });
