@@ -2,15 +2,14 @@ import React, { FC, memo } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "../components/pages/Login";
 
-import { Header } from "../components/layout/Header";
 import { Setting } from "../components/pages/Setting";
 import { UserManagement } from "../components/pages/UserManagement";
+import { HeaderLayout } from "../components/template/HeaderLayout";
 
 export const Router: FC = memo(() => {
   return (
     <Routes>
-      <Route path="home">
-        <Route path="" element={<Header />} />
+      <Route path="/home" element={<HeaderLayout />}>
         <Route path="setting" element={<Setting />} />
         <Route path="user_management" element={<UserManagement />} />
       </Route>
