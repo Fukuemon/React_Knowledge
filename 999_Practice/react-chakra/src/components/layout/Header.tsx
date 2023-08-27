@@ -1,5 +1,4 @@
-import React, { useCallback } from "react";
-import { memo, FC } from "react";
+import { memo, FC, useCallback } from "react";
 import { Flex, Heading, Link, Box, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { MenuDrawer } from "../molecules/MenuDrawer";
@@ -8,11 +7,19 @@ import { useNavigate } from "react-router-dom";
 export const Header: FC = memo(() => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const navigate = useNavigate();
-  const onClickHome = () => {
+  const onClickHome = useCallback(() => {
     navigate("/home", { state: { id: "1" } });
-  };
-  const onClickUserManagement = () => navigate("/home/user_management");
-  const onClickSetting = () => navigate("/home/setting"); // ここでのhistoryはuseHistory()の戻り値
+  }, [navigate]);
+
+  const onClickUserManagement = useCallback(
+    () => navigate("/home/user_management"),
+    [navigate]
+  );
+
+  const onClickSetting = useCallback(
+    () => navigate("/home/setting"),
+    [navigate]
+  );
 
   return (
     <>

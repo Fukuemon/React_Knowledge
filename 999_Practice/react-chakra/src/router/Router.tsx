@@ -9,7 +9,7 @@ import { HeaderLayout } from "../components/template/HeaderLayout";
 export const Router: FC = memo(() => {
   return (
     <Routes>
-      <Route path="/home" element={<HeaderLayout />}>
+      <Route path="home" element={<HeaderLayout />}>
         <Route path="setting" element={<Setting />} />
         <Route path="user_management" element={<UserManagement />} />
       </Route>
