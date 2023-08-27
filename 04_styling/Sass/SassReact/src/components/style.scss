@@ -1,0 +1,36 @@
+$cBlack: #000;
+$cWhite: #fff;
+
+
+.rect { 
+    width: 100px;
+    height: 100px;
+    margin: 0 auto; // 左右中央寄せ
+    background-color: $cBlack;
+}
+
+.btn {
+    background-color: $cWhite;
+    color: $cBlack;
+    border: 1px solid $cBlack;
+    margin: 0 auto;
+    padding: 10px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 1s;
+
+    &.changecolor {
+        &:hover {
+            background-color: $cBlack;
+            color: $cWhite;
+        }
+    }
+
+
+    &.float {
+        &:hover{
+            box-shadow: 0 0 10px $cBlack;
+        }
+    }
+
+}

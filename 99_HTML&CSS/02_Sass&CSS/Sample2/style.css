@@ -1,0 +1,17 @@
+.parent {
+  color: blue;
+}
+.parent > .element {
+  color: red;
+}
+.parent > .element.second-child {
+  color: black;
+}
+
+.element {
+  color: purple;
+}
+
+.child {
+  color: purple;
+}/*# sourceMappingURL=style.css.map */

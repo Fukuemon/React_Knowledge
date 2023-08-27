@@ -1,0 +1,51 @@
+$cwhite: #fff;
+$cblack: #000;
+$cred: #f00;
+
+#container {
+  text-align: center;
+  & .btn {
+    background-color: $cwhite;
+    color: $cred;
+    border: 2px solid $cred;
+    padding: 14px 28px;
+    margin: 10px 0;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $cred;
+      color: $cwhite;
+    }
+  }
+}
+
+.btn {
+  background-color: $cwhite;
+  color: $cblack;
+  border: 2px solid $cblack;
+  padding: 14px 28px;
+  margin: 10px 0;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $cblack;
+    color: $cwhite;
+  }
+}
+
+#container .btn {
+  background-color: $cwhite;
+  color: $cred;
+  border: 2px solid $cred;
+  padding: 14px 28px;
+  margin: 10px 0;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $cred;
+    color: $cwhite;
+  }
+}
