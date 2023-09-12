@@ -1,6 +1,4 @@
-import React, { StrictMode } from 'react';
-import './App.css';
-import Userform from './features/Auth/components/parts/UserForm';
+import React from 'react';
 import UserProfile from './features/UserProfile';
 import {
   createBrowserRouter,
