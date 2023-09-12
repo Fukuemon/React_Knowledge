@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Header = () => {
+type ProfileHeaderProps = {
+  user: {
+    username: string;
+    avatar: string;
+  };
+};
+
+const ProfileHeader: FC<ProfileHeaderProps> = (props) => {
   return (
-    <header className="h-15 bg-white border-b border-gray-primary md-8"></header>
+    <div className="grid grid-cols-3 gap-4 justify-betweenmx-auto max-w-screen-lg">
+      <div className="container flex justify-center">
+        <img
+          className="rounded-full h-40 w-40 flex"
+          alt={`${props.user.username} profile picture`}
+          src={props.user.avatar}
+        />
+      </div>
+    </div>
   );
 };
 
-export default Header;
+export default ProfileHeader;
