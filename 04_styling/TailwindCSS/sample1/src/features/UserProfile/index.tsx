@@ -2,16 +2,21 @@ import { useState } from 'react';
 import Header from '../../components/layout/Navbar';
 import ProfileHeader from '../../components/UserProfile/Header';
 
+// ユーザー情報のダミーデータ
+const user = {
+  username: 'test',
+  avatar: '../../../public/penguin.jpeg',
+  following: ['test1', 'test2'],
+  followers: ['test1', 'test2'],
+};
+
 const UserProfile = () => {
   const [isUser, setUser] = useState(true);
-  const user = {
-    username: 'test',
-    avatar: '../../../public/penguin.jpeg',
-  };
+
   return isUser ? (
     <div className="bg-gray-50 h-screen">
       <Header />
-      <ProfileHeader user={user} />
+      <ProfileHeader user={user} postCount={4} />
     </div>
   ) : (
     <div>
