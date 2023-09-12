@@ -1,8 +1,28 @@
+import React, { StrictMode } from 'react';
 import './App.css';
 import Userform from './features/Auth/components/parts/UserForm';
+import UserProfile from './features/UserProfile';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
 
-function App() {
-  return <Userform />;
-}
+// ページのルートを作成
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<UserProfile />} />
+    </>,
+  ),
+);
 
-export default App;
+// ルートコンポーネントを作成
+export const App: React.FC = () => {
+  return (
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  );
+};
