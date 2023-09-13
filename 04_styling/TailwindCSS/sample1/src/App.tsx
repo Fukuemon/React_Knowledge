@@ -6,12 +6,14 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
+import MyPage from './features/Mypage';
 
 // ページのルートを作成
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<UserProfile />} />
+      <Route path="/mypage" element={<MyPage />} />
     </>,
   ),
 );
