@@ -43,7 +43,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = (props) => {
         />
       </div>
 
-      {/* ユーザー名 */}
+      {/* ユーザー名とフォローボタン */}
       <div className="flex items-center justify-center flex-col col-span-2">
         <div className="container flex items-center">
           <p className="text-2xl mr-4">{props.user.username}</p>
