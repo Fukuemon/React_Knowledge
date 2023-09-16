@@ -1,0 +1,5 @@
+{
+    "extends": "./tsconfig.json", // tsconfig.json を継承
+    "include": ["src/**/*.ts", "src/**/*.tsx"], // 解析対象のファイル
+    "exclude": ["node_modules", "dist"] // 解析対象外のファイル
+  }
