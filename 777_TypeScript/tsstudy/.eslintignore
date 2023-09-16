@@ -1,0 +1,7 @@
+build/ # ビルドファイル
+public/ # 静的ファイル
+**/coverage/ # テストカバレッジ
+**/node_modules/ # パッケージ管理
+**/*.min.js # 圧縮ファイル
+*.config.js # 設定ファイル
+.*lintrc.js  # 設定ファイル
